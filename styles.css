@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+:root {
+    --card-height:300px;
+    --card-width:calc(var(--card-width) / 1.5);
+}
+@import url("https://use.typekit.net/ubr6aji.css");
 *,
 *::before,
 *::after {
@@ -14,156 +18,109 @@ html {
 
 body {
     margin: 0;
-    font-family: "Open Sans", sans-serif;
-    background-color: 
-#4DCFC7;
-}
-
-header {
-    background-color: 
-#ffffff;
-    box-shadow: 0 10px 15px -3px 
-rgba(0, 0, 0, 0.1),
-        0 4px 6px -4px 
-rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-}
-header .wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+    font-family: "alegreya-sans-sc", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    background-color: #4DCFC7;
+    width: 100vw;
+    height: 100vw;
     align-items: center;
-    justify-content: space-between;
-}
-header .logo img {
-    height: 400px;
-    display: block;
+    justify-content: center;
+    display: flex;
 }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 100%;
-    margin: 0;
-    width: 50%;
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 50px;
+}
+
+.cover-image {
+    width: 100%;
     height: 100%;
-    background-color: 
-white;
-    padding: 30px;
-    transition: left 0.3s;
+    object-fit: cover;
 }
 
-.navbar.show {
-    left: 0 !important;
+.wrapper {
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
 }
 
-.hide-scroll {
-    overflow: hidden;
+.card:hover .wrapper {
+    transform: perspective(900px) translate(-5%) rotate(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8 rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8 rgba(0, 0, 0, 0.75);
 }
 
-.navbar ul {
-    all: unset;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 45px;
-}
-.navbar ul a {
-    all: unset;
-    color: 
-#444444;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 48px;
-}
-.navbar ul a:hover {
-    color: 
-#111111;
-    text-decoration: underline overline;
-    text-decoration-thickness: 3px;
-}
-
-.close-nav {
-    text-align: right;
-    margin-bottom: 20px;
-}
-.close-nav button {
-    all: unset;
-    background: 
-#f7f7f7;
-    font-size: 42px;
-    cursor: pointer;
-    border: 1px solid 
-rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 3px;
-    color: 
-#444444;
-}
-.close-nav button:hover {
-    color: 
-#222222;
-    background: 
-white;
-}
-
-.menu-bar button {
-    border: 1px solid 
-rgba(0, 0, 0, 0.1);
-    background: 
-#f7f7f7;
-    height: 50px;
-    width: 50px;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-}
-.menu-bar i {
-    display: block;
-    border-top: 3px solid 
-#444444;
-    border-bottom: 3px solid 
-#444444;
-}
-.menu-bar i::after {
-    display: block;
+.wrapper::before,
+.wrapper::after {
     content: "";
-    border-top: 3px solid 
-#444444;
-    margin: 6px 0;
-}
-.menu-bar button:hover {
-    background: 
-white;
-}
-.menu-bar button:hover i {
-    border-color: 
-#222222;
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px;
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+        to top,
+        transparent 46%,
+        rgba(12, 13, 19 0.5)68%,
+        rgba(12, 13, 19)97%
+    );
 }
 
-@media (min-width: 550px) {
-    .navbar {
-        all: unset;
-        display: block;
-    }
-    .navbar ul {
-        flex-direction: row;
-        gap: 20px;
-    }
-    .navbar ul a {
-        font-size: inherit;
-    }
-    .close-nav,
-    .menu-bar {
-        display: none;
-    }
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 46%,
+        rgba(12, 13, 19 0.5)68%,
+        rgba(12, 13, 19)97%
+    );
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+    opacity: 1;
+}
+
+.card:hover .wrapper::after {
+    height: 120px;
+}
+
+.title {
+    width: 100%;
+    transition: transform 0.5s;
+}
+
+.card:hover .title {
+    transform: translate3d(0%, -50px, 1000px);
+}
+
+.character {
+    width: 100%;
+    opacity: 0;
+    transition: all0.5%;
+    position: absolute;
+    z-index: -1;
+}
+
+.card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
 }
