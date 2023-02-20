@@ -47,7 +47,17 @@ body {
   height: -webkit-fill-available;
   color: var(--color-black);
   background-color: var(--color-white);
+  
 }
+
+span h3 {
+  color: black;
+  padding-left: 30px;
+  padding-top: 180px;
+  font-size: 30px;
+  
+}
+
 
 a,
 button {
@@ -486,4 +496,28 @@ hr{
 
 .copyright p{
   padding: 20px;
+}
+
+.adam {
+  display: flex;
+  width: fit-content;
+  max-width: 1320px;
+  flex-wrap: wrap;
+  margin: 45px ;
+  padding-left: 80px;
+  /* gap: 14px; */
+}
+
+.adam img:hover {
+  transform: scale(1.1);
+}
+
+.adam img {
+  width: 300px;
+  height:450px;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 10px 10px;
 }
