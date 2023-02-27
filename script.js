@@ -116,4 +116,5 @@ let imgs = document.querySelectorAll("img");
             document.querySelector("body").append(openDiv);
           }
         });
+        
       });
